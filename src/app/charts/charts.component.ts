@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { chartsService } from './charts.service';
 import * as Plotly from 'plotly.js';
 
@@ -10,7 +10,9 @@ import * as Plotly from 'plotly.js';
 })
 export class chartComponent implements OnInit {
 
+  @Input() selectedChartType:string;
   constructor(private chartsService: chartsService) {}
+  
   private chartArr = [];
   private x = [];
   private y = [];
@@ -18,12 +20,27 @@ export class chartComponent implements OnInit {
   private chartJsonData;
   private values = [];
   private labels = [];
-  getChartData() {
+  getChartData(chartType, selectionType) {
+    this.chartsService.getParams(chartType, selectionType);
   	this.chartsService.get().subscribe(result => {
         console.log("Result",result['_body']);
         this.chartJsonData = result['_body'];
         this.chartArr = JSON.parse(this.chartJsonData);
-        this.renderStackedBarChart();
+        switch(this.chartArr['chartname']) {
+            case "BarChart":
+                this.renderBarChart();
+                break;
+            case "StackedBarChart":
+                this.renderStackedBarChart();
+                break;
+            case "PieChart":
+                this.renderPieChart();
+                break;
+           case "DonutChart":
+                this.renderDonutChart();
+                break;
+            default: console.log("no valid chartType");
+        }
     });
   }
   
@@ -87,14 +104,15 @@ export class chartComponent implements OnInit {
   }
 
   parseChartData() {
-    for (var i=0; i<this.chartArr.length; i++) {
-        this.labels.push(this.chartArr[i]['userName']);
-        this.values.push(this.chartArr[i]['countofcases']);
+    let chartDetail = this.chartArr['chartDetail'];
+    for (var i=0; i<chartDetail.length; i++) {
+        this.labels.push(chartDetail[i]['userName']);
+        this.values.push(chartDetail[i]['countofcases']);
     }
   }
 
   ngOnInit() {
-  	this.getChartData();
+  	//this.getChartData();
   }
 
 }

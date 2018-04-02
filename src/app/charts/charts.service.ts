@@ -5,11 +5,23 @@ import {Observable} from 'rxjs/Rx';
 @Injectable()
 export class chartsService {
   public result : any;
-  constructor(private http: Http) { }
+  public chartType;
+  public selectionType;
+  constructor(private http: Http) { 
 
+  }
+
+
+  getParams(chartType, selType) {
+  	this.chartType = chartType;
+  	this.selectionType = selType;
+  }
   get() {
-  	let chartData = this.http.get('http://localhost/Projects/conn.php').map(result => result);
-    console.log(chartData);
+  	console.log("chartType" + this.chartType);
+  	console.log("selectionType"+this.selectionType);
+  	let chartData = this.http.get("http://localhost/Projects/OEApis/classes/OE-Api.php?chartType="+this.chartType+
+  		"&selectionType="+this.selectionType+"").map(result => result);
+    //console.log(chartData);
     return chartData;
   }
 }

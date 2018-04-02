@@ -1,43 +1,36 @@
 <section class="todoapp">
   <header class="header">
     <h1>Charts</h1>
-    <button id="run" value="Run"></button>
   </header>
   <!-- This section should be hidden by default and shown when there are todos -->
   <section class="main">
       <div id="renderChart"></div>
       <div id="chartHorzList">
-        <div id="charts-D1M1">
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
+        <div id="charts-D1M1" [ngClass]= "{ 'active' : selectedChartType === 'D1M1', 'hidden' : selectedChartType !== 'D1M1' }">
+          <div class="chartitem"><img src="https://community.jaspersoft.com/Resources/Images/column-spline-chart_280x262.png"></div>
         </div>
-        <div id="charts-D1Mn">
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
+        <div id="charts-D1Mn"   [ngClass]= "{ 'active' : selectedChartType === 'D1Mn', 'hidden' : selectedChartType !== 'D1Mn'}">
+          <div class="chartitem" (click) = "getChartData('LineChart', 'D1Mn')" ><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></div>
+          <div class="chartitem"><img src="https://community.jaspersoft.com/Resources/Images/column-spline-chart_280x262.png"></div>
+          <div class="chartitem"><img src="https://www.think-cell.com/en/support/manual/images/slideview/secondary_axis.png"></div>
+          <div class="chartitem"><img src="https://cdn4.iconfinder.com/data/icons/flat-business-icon-set/450/bar_chart-512.png"></div>
+          <div class="chartitem"><img src="https://docs.stiltsoft.com/download/attachments/12223375/pivot_table_icon_demo.png?version=1&modificationDate=1479365760000&api=v2"></div>
+          <div class="chartitem"><img src="https://www.angularjs4u.com/wp-content/uploads/2017/06/Vaadin-Grid.jpg"></div>
+          <div class="chartitem"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Scatter_diagram_for_quality_characteristic_XXX.svg/1200px-Scatter_diagram_for_quality_characteristic_XXX.svg.png"></div>
+          <div class="chartitem"><img src="https://discourse-cdn-sjc2.com/standard16/uploads/plot/original/1X/517f9817bd6eaec15e2c36f43c0fa8580c2af4fb.png"></div>
         </div>
-        <div id="charts-DnM1">
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
+        <div id="charts-DnM1"  [ngClass]=  "{ 'active' : selectedChartType === 'DnM1', 'hidden' : selectedChartType !== 'DnM1' }">
+          <div class="chartitem" ><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></div>
+          <div class="chartitem"><img src="https://www.think-cell.com/en/support/manual/images/slideview/secondary_axis.png"></div>
+          <div class="chartitem" (click) = "getChartData('barChart', 'DnM1')" ><img src="https://cdn4.iconfinder.com/data/icons/flat-business-icon-set/450/bar_chart-512.png"></div>
+          <div class="chartitem" (click) = "getChartData('pieChart', 'DnM1')"><img src="https://plot.ly/~PythonPlotBot/2095.png"></div>
+          <div class="chartitem" (click) = "getChartData('donutChart', 'DnM1')" ><img src="https://d2wh20haedxe3f.cloudfront.net/sites/default/files/docs_190726c_pie_chart_en.gif"></div>
         </div>
-        <div id="charts-DnMn">
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
-          <span class="chartitem"><img src="http://www.excel-easy.com/examples/images/line-chart/line-chart.png"></span>
+        <div id="charts-DnMn"  [ngClass]=  "{ 'active' : selectedChartType === 'DnMn', 'hidden' : selectedChartType !== 'DnMn' }">
+          <div class="chartitem"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Scatter_diagram_for_quality_characteristic_XXX.svg/1200px-Scatter_diagram_for_quality_characteristic_XXX.svg.png"></div>
+          <div class="chartitem"><img src="https://discourse-cdn-sjc2.com/standard16/uploads/plot/original/1X/517f9817bd6eaec15e2c36f43c0fa8580c2af4fb.png"></div>
+          <div class="chartitem"><img src="https://www.angularjs4u.com/wp-content/uploads/2017/06/Vaadin-Grid.jpg"></div>
+          <div class="chartitem"><img src="https://docs.stiltsoft.com/download/attachments/12223375/pivot_table_icon_demo.png?version=1&modificationDate=1479365760000&api=v2"></div>
         </div>
       </div>
   </section>

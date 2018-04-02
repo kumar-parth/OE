@@ -1,5 +1,19 @@
 .chartitem img{
-	width:120px;
-	height:120px;
+	width:145px;
+	height:124px;
+	display:inline-block;
+}
+
+.active {
+	display:block;
+}
+
+.hidden {
+	display:none;
+}
+
+.chartitem {
+	padding:5px;
+	border:1px solid black;
 	display:inline-block;
 }
